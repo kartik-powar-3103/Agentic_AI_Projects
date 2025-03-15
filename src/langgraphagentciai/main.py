@@ -13,7 +13,7 @@ def load_langgraph_agenticai_app():
     user_input = ui.load_streamlit_ui()
 
     if not user_input:
-        st.error("Error: Failed t load use input from the UI.")
+        st.error("Error: Failed to load use input from the UI.")
         return 
     
     # Text input for user message 
@@ -22,12 +22,13 @@ def load_langgraph_agenticai_app():
     else:
         user_message = st.chat_input("Enter your message:")
     
+
     if user_message:
         try:
             # Configure LLM 
             obj_llm_config = GroqLLM(user_controls_input=user_input)
             model = obj_llm_config.get_llm_model()
-            
+
             if not model:
                 st.error("Error: LLM model could not be initialized.")
                 return 
